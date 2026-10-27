@@ -72,7 +72,7 @@ Known gaps:
 - **Reporting rule (decided before any results):** headline metrics are reported on all cases and on cases without a solution-leak diff (i.e. excluding django-12453 and sympy-22005).
 
 ## Split
-TODO: 150/150, stratified by repo, seed ___, IDs in `splits/dev.txt` and `splits/test.txt`.
+TODO: 150/150, stratified by repo, seed 20261027, IDs in `splits/dev.txt` and `splits/test.txt`.
 - Odd-count repos (sympy, matplotlib, scikit-learn, pytest, xarray, flask) alternate the extra case between dev and test so totals are exactly 150/150.
 - Balance check (|SMD| < 0.1 as a guide) on `any_mention`, `has_traceback`, `gold_in_traceback`, `traceback_misleads`, `issue_has_diff`, `n_hunks`, `lines_added`. With only 4 diff cases (2 solution leaks), check where each lands rather than relying on SMD.
 - Report the share of test gold files that also appear as gold files in dev.
