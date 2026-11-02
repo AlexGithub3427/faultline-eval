@@ -1,0 +1,29 @@
+[project]
+name = "faultline-eval"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Alex Tran", email = "aextran@ucdavis.edu" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "datasets>=5.1.0",
+    "huggingface-hub>=2.2.0",
+    "pandas>=3.0.6",
+    "pathlib>=1.0.1",
+    "requests>=2.34.2",
+    "unidiff>=1.0.1",
+]
+
+[project.scripts]
+faultline-eval = "faultline_eval:main"
+
+[build-system]
+requires = ["uv_build>=0.13.1,<0.14.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+]

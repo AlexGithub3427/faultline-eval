@@ -1,8 +1,14 @@
 import random
 import pytest
+import hashlib
+import json
+
 from collections import Counter
 from faultline_eval.splits import stratified_split
-
+from faultline_eval.data import load_lite, load_split, ROOT
+# --------------------------------------------------------------------------------------------------------------------------------------------------
+# Tests for stratified_split function
+# --------------------------------------------------------------------------------------------------------------------------------------------------
 def toy():
     iids = [f"r{i}" for i in range(7)] + [f"s{i}" for i in range(4)] + [f"t{i}" for i in range(3)]
     repos = ["r"] * 7 + ["s"] * 4 + ["t"] * 3
@@ -74,3 +80,35 @@ def test_duplicate_iids_raise():
     with pytest.raises(ValueError):
         stratified_split(["1", "1"], ["1", "1"], seed=0)
 
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------
+# Tests for commited split
+# --------------------------------------------------------------------------------------------------------------------------------------------------
+EXPECTED_DEV_HASH = "e17b15285c13f9929fdfe1ce9a936f1a79cc491b5a91ecf11a46591a12025cda"
+EXPECTED_TEST_HASH = "70d058f66cafd6d085bd9439ca77241e0e9eee48a6662f3116b84cc0c008e33f"
+SPLITS_DIR = ROOT / "data" / "splits"
+
+def sha256(path):
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def test_frozen_hashes_match_constants_and_meta():
+    meta = json.loads((SPLITS_DIR / "split_meta.json").read_text())
+    assert sha256(SPLITS_DIR / "dev.txt") == EXPECTED_DEV_HASH == meta["dev_hash"]
+    assert sha256(SPLITS_DIR / "test.txt") == EXPECTED_TEST_HASH == meta["test_hash"]
+
+
+def test_frozen_split_sizes_and_disjoint():
+    dev, test = load_split("dev"), load_split("test")
+    assert len(dev) == len(test) == 150
+    assert set(dev).isdisjoint(test)
+
+
+def test_frozen_split_covers_lite():
+    lite_ids = set(load_lite()["test"]["instance_id"])
+    assert set(load_split("dev")) | set(load_split("test")) == lite_ids
+
+
+def test_load_split_rejects_unknown():
+    with pytest.raises(ValueError):
+        load_split("smoke")

@@ -1,0 +1,179 @@
+{
+    "seed": 20261027,
+    "dataset": "SWE-bench_Lite",
+    "revision": "6ec7bb89b9342f664a54a6e0a6ea6501d3437cc2",
+    "repo_counts": {
+        "astropy/astropy": {
+            "dev": 3,
+            "test": 3
+        },
+        "django/django": {
+            "dev": 57,
+            "test": 57
+        },
+        "matplotlib/matplotlib": {
+            "dev": 12,
+            "test": 11
+        },
+        "mwaskom/seaborn": {
+            "dev": 2,
+            "test": 2
+        },
+        "pallets/flask": {
+            "dev": 1,
+            "test": 2
+        },
+        "psf/requests": {
+            "dev": 3,
+            "test": 3
+        },
+        "pydata/xarray": {
+            "dev": 3,
+            "test": 2
+        },
+        "pylint-dev/pylint": {
+            "dev": 3,
+            "test": 3
+        },
+        "pytest-dev/pytest": {
+            "dev": 8,
+            "test": 9
+        },
+        "scikit-learn/scikit-learn": {
+            "dev": 12,
+            "test": 11
+        },
+        "sphinx-doc/sphinx": {
+            "dev": 8,
+            "test": 8
+        },
+        "sympy/sympy": {
+            "dev": 38,
+            "test": 39
+        }
+    },
+    "stratified_on": [
+        "repo",
+        "any_mention",
+        "traceback_misleads"
+    ],
+    "stratum_counts": {
+        "astropy/astropy|False|False": {
+            "dev": 1,
+            "test": 0
+        },
+        "astropy/astropy|False|True": {
+            "dev": 0,
+            "test": 1
+        },
+        "astropy/astropy|True|False": {
+            "dev": 2,
+            "test": 2
+        },
+        "django/django|False|False": {
+            "dev": 41,
+            "test": 41
+        },
+        "django/django|False|True": {
+            "dev": 4,
+            "test": 4
+        },
+        "django/django|True|False": {
+            "dev": 11,
+            "test": 11
+        },
+        "django/django|True|True": {
+            "dev": 1,
+            "test": 1
+        },
+        "matplotlib/matplotlib|False|False": {
+            "dev": 5,
+            "test": 4
+        },
+        "matplotlib/matplotlib|True|False": {
+            "dev": 7,
+            "test": 7
+        },
+        "mwaskom/seaborn|False|False": {
+            "dev": 0,
+            "test": 1
+        },
+        "mwaskom/seaborn|True|False": {
+            "dev": 2,
+            "test": 1
+        },
+        "pallets/flask|False|False": {
+            "dev": 1,
+            "test": 2
+        },
+        "psf/requests|False|False": {
+            "dev": 2,
+            "test": 2
+        },
+        "psf/requests|True|False": {
+            "dev": 1,
+            "test": 1
+        },
+        "pydata/xarray|False|False": {
+            "dev": 3,
+            "test": 2
+        },
+        "pylint-dev/pylint|False|False": {
+            "dev": 1,
+            "test": 2
+        },
+        "pylint-dev/pylint|False|True": {
+            "dev": 1,
+            "test": 0
+        },
+        "pylint-dev/pylint|True|False": {
+            "dev": 1,
+            "test": 1
+        },
+        "pytest-dev/pytest|False|False": {
+            "dev": 6,
+            "test": 7
+        },
+        "pytest-dev/pytest|True|False": {
+            "dev": 2,
+            "test": 2
+        },
+        "scikit-learn/scikit-learn|False|False": {
+            "dev": 7,
+            "test": 7
+        },
+        "scikit-learn/scikit-learn|False|True": {
+            "dev": 1,
+            "test": 0
+        },
+        "scikit-learn/scikit-learn|True|False": {
+            "dev": 4,
+            "test": 4
+        },
+        "sphinx-doc/sphinx|False|False": {
+            "dev": 6,
+            "test": 6
+        },
+        "sphinx-doc/sphinx|True|False": {
+            "dev": 2,
+            "test": 2
+        },
+        "sympy/sympy|False|False": {
+            "dev": 26,
+            "test": 27
+        },
+        "sympy/sympy|False|True": {
+            "dev": 2,
+            "test": 1
+        },
+        "sympy/sympy|True|False": {
+            "dev": 10,
+            "test": 11
+        }
+    },
+    "date": "2026-10-29",
+    "n_dev": 150,
+    "dev_hash": "e17b15285c13f9929fdfe1ce9a936f1a79cc491b5a91ecf11a46591a12025cda",
+    "n_test": 150,
+    "test_hash": "70d058f66cafd6d085bd9439ca77241e0e9eee48a6662f3116b84cc0c008e33f"
+}

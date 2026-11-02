@@ -10,35 +10,35 @@ import random
 from collections import defaultdict
 
 
-def stratified_split(iids: list[str], repos: list[str], seed: int) -> tuple[list[str], list[str]]:
+def stratified_split(iids: list[str], strata: list[str], seed: int) -> tuple[list[str], list[str]]:
     """
-    Split cases 50/50 within each repo.
+    Split cases 50/50 within each stratum.
 
-    Repos with an odd number of cases give the extra case alternately to dev and test (in sorted repo order), so totals
-    come out exactly even when the number of odd repos is even
+    Strata with an odd number of cases give the extra case alternately to dev and test (in sorted stratum order).
+    Because the total is even, the number of odd strata is even, so totals come out exactly equal.
 
-    Returns (dev_iids, test_iids), each sorted.
+    Returns (dev_iids, test_iids).
     """
 
-    if len(iids) != len(repos):
-        raise ValueError("iids and repos must have the same length")
+    if len(iids) != len(strata):
+        raise ValueError("iids and strata must have the same length")
     if len(set(iids)) != len(iids):
         raise ValueError("duplicate instance iids")
 
 
-    # 1. Group iids by repo
-    by_repo: dict[str, list[str]] = defaultdict(list)
-    for iid, repo in zip(iids, repos):
-        by_repo[repo].append(iid)
+    # 1. Group iids by strata
+    by_strata: dict[str, list[str]] = defaultdict(list)
+    for iid, stratum in zip(iids, strata):
+        by_strata[stratum].append(iid)
 
     rng = random.Random(seed)
     dev: list[str] = []
     test: list[str] = []
     extra_to_dev = True
 
-    # 2. Process repos in sorted order
-    for repo in sorted(by_repo):
-        group = sorted(by_repo[repo])
+    # 2. Process stratas in sorted order
+    for stratum in sorted(by_strata):
+        group = sorted(by_strata[stratum])
         rng.shuffle(group)
 
         n_dev = len(group) // 2
